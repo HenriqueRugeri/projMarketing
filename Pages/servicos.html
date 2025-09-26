@@ -7,24 +7,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../estilos/servicos.css">
-
+  <script defer src="../scripts.js/servicos.js"></script>
 </head>
 <body>
 
   <!-- Header -->
   <header class="navbar" role="banner">
     <div class="logo" aria-hidden="false">
-      <div class="logo-icon">i</div>
-      <div>
-        <span class="logo-text">luck</span>
-        <span class="logo-agencia">agência</span>
-      </div>
+      <img src="imagens\resized_logo_500x500.png" alt="OnTop" class="header-logo">
     </div>
 
     <!-- Desktop Navigation Menu -->
     <nav class="menu" role="navigation" aria-label="Menu principal">
-      <a href="../index.html">Home</a>
+      <a href="#">Home</a>
+      <a href="#" class="dropdown-toggle">Nossos Serviços <i class="fas fa-chevron-down"></i></a>
       <a href="#">Quem Somos</a>
+      <a href="#">Blog</a>
       <a href="#" class="dropdown-toggle">Contato <i class="fas fa-chevron-down"></i></a>
     </nav>
 
@@ -50,7 +48,8 @@
       <div class="side-close" id="sideClose" aria-label="Fechar menu">✕</div>
       <h3>Menu</h3>
       <ul class="nav-list">
-        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Nossos Serviços ▾</a></li>
         <li><a href="#">Quem Somos</a></li>
         <li><a href="#">Blog</a></li>
         <li><a href="#">Contato ▾</a></li>
@@ -62,164 +61,248 @@
   <h2>Nossos Serviços Principais</h2>
   <p>Soluções completas e personalizadas para impulsionar seu negócio no mundo digital</p>
 
+  <!-- OnTop Partner Logo -->
+  <div class="partner-section">
+    <img src="imagens\9.png" alt="OnTop" class="partner-logo">
+  </div>
+
   <div class="cards-grid">
 
-    <!-- Card 1 -->
+    <!-- Card 1 - Estratégia e Consultoria -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-lightbulb"></i></div>
+      <h3>Estratégia e Consultoria</h3>
+      <ul>
+        <li>Planejamento de marketing</li>
+        <li>Diagnóstico e auditoria de marca</li>
+        <li>Definição de persona e jornada do cliente</li>
+        <li>Posicionamento de marca</li>
+        <li>Estratégia de funil de vendas</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Planejamento</span>
+        <span class="tag">Auditoria</span>
+        <span class="tag">Persona</span>
+      </div>
+    </div>
+
+    <!-- Card 2 - Branding e Identidade Visual -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-palette"></i></div>
+      <h3>Branding e Identidade Visual</h3>
+      <ul>
+        <li>Criação de marca (nome, slogan, identidade)</li>
+        <li>Design de logotipo</li>
+        <li>Manual de identidade visual</li>
+        <li>Redesign de marca</li>
+        <li>Papelaria (cartão, cabeçalho de e-mail etc.)</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Logo</span>
+        <span class="tag">Identidade</span>
+        <span class="tag">Manual</span>
+      </div>
+    </div>
+
+    <!-- Card 3 - Marketing Digital -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-bullhorn"></i></div>
+      <h3>Marketing Digital</h3>
+      <ul>
+        <li>Planejamento de marketing digital</li>
+        <li>Criação de conteúdo digital</li>
+        <li>Gestão de campanhas (Google Ads, Facebook)</li>
+        <li>Criação de sites e landing pages</li>
+        <li>SEO e marketing</li>
+        <li>Automação de marketing</li>
+        <li>CRM e nutrição de leads</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Google Ads</span>
+        <span class="tag">SEO</span>
+        <span class="tag">CRM</span>
+      </div>
+    </div>
+
+    <!-- Card 4 - Mídia Paga (Tráfego Pago) -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+      <h3>Mídia Paga (Tráfego Pago)</h3>
+      <ul>
+        <li>Meta Ads (Facebook, Instagram)</li>
+        <li>Google Ads (pesquisa, display, YouTube, Shopping)</li>
+        <li>LinkedIn Ads</li>
+        <li>TikTok Ads</li>
+        <li>Remarketing</li>
+        <li>Gestão de verba e otimização de ROI</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Meta Ads</span>
+        <span class="tag">Google Ads</span>
+        <span class="tag">ROI</span>
+      </div>
+    </div>
+
+    <!-- Card 5 - Redes Sociais -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-share-alt"></i></div>
+      <h3>Redes Sociais</h3>
+      <ul>
+        <li>Planejamento de conteúdo para redes</li>
+        <li>Gestão de perfis</li>
+        <li>Criação de artes e vídeos</li>
+        <li>Gestão de perfil (Instagram, Facebook, LinkedIn, TikTok etc.)</li>
+        <li>Monitoramento e engajamento com seguidores</li>
+        <li>Relatórios de desempenho</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Instagram</span>
+        <span class="tag">Facebook</span>
+        <span class="tag">LinkedIn</span>
+      </div>
+    </div>
+
+    <!-- Card 6 - Produção de Conteúdo -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-video"></i></div>
+      <h3>Produção de Conteúdo</h3>
+      <ul>
+        <li>Redação publicitária (copywriting)</li>
+        <li>Criação de blogs e artigos otimizados para SEO</li>
+        <li>Roteirização de vídeos</li>
+        <li>Criação de e-books e materiais ricos</li>
+        <li>Fotografia e vídeo institucional</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Copywriting</span>
+        <span class="tag">SEO</span>
+        <span class="tag">Vídeo</span>
+      </div>
+    </div>
+
+    <!-- Card 7 - Design Gráfico -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-paint-brush"></i></div>
+      <h3>Design Gráfico</h3>
+      <ul>
+        <li>Criação de materiais digitais e impressos</li>
+        <li>Artes para redes sociais, anúncios</li>
+        <li>Diagramação de apresentações e catálogos</li>
+        <li>Criação de materiais promocionais</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Digital</span>
+        <span class="tag">Impressos</span>
+        <span class="tag">Catálogos</span>
+      </div>
+    </div>
+
+    <!-- Card 8 - Audiovisual e Multimídia -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-film"></i></div>
+      <h3>Audiovisual e Multimídia</h3>
+      <ul>
+        <li>Vídeos institucionais e institucionais</li>
+        <li>Reels, TikToks e Shorts</li>
+        <li>Animações e motion graphics</li>
+        <li>Podcasts e produção de áudio</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Reels</span>
+        <span class="tag">Motion</span>
+        <span class="tag">Podcast</span>
+      </div>
+    </div>
+
+    <!-- Card 9 - Desenvolvimento Web -->
     <div class="service-card">
       <div class="icon-box"><i class="fas fa-code"></i></div>
       <h3>Desenvolvimento Web</h3>
       <ul>
-        <li>Design Responsivo</li>
-        <li>Performance Otimizada</li>
-        <li>SEO Integrado</li>
-        <li>Manutenção Contínua</li>
+        <li>Criação de sites institucionais</li>
+        <li>Landing pages e páginas de vendas</li>
+        <li>Lojas virtuais (e-commerce)</li>
+        <li>Manutenção e otimização de sites</li>
       </ul>
       <div class="tags">
-        <span class="tag">React</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">Python</span>
+        <span class="tag">Sites</span>
+        <span class="tag">E-commerce</span>
+        <span class="tag">Landing Page</span>
       </div>
     </div>
 
-    <!-- Card 2 -->
+    <!-- Card 10 - Assessoria e Relações Públicas -->
     <div class="service-card">
-      <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
-      <h3>Aplicativos Mobile</h3>
+      <div class="icon-box"><i class="fas fa-newspaper"></i></div>
+      <h3>Assessoria e Relações Públicas</h3>
       <ul>
-        <li>iOS & Android</li>
-        <li>UX/UI Otimizada</li>
-        <li>Integração APIs</li>
-        <li>Push Notifications</li>
+        <li>Assessoria de imprensa</li>
+        <li>Press releases</li>
+        <li>Relações com influenciadores</li>
+        <li>Estratégias de PR</li>
       </ul>
       <div class="tags">
-        <span class="tag">Flutter</span>
-        <span class="tag">React Native</span>
-        <span class="tag">Swift</span>
+        <span class="tag">Imprensa</span>
+        <span class="tag">PR</span>
+        <span class="tag">Influenciadores</span>
       </div>
     </div>
 
-    <!-- Card 3 -->
+    <!-- Card 11 - Inteligência Artificial -->
     <div class="service-card">
       <div class="icon-box"><i class="fas fa-brain"></i></div>
       <h3>Inteligência Artificial</h3>
       <ul>
-        <li>Machine Learning</li>
-        <li>Análise Preditiva</li>
-        <li>Chatbots Inteligentes</li>
-        <li>Processamento de Dados</li>
+        <li>Criação de conteúdos com IA (textos, imagens, vídeos, roteiros)</li>
+        <li>Automatização de atendimentos (chatbots inteligentes)</li>
+        <li>Análise preditiva de comportamento do consumidor</li>
+        <li>Personalização de experiências</li>
+        <li>Otimização de anúncios com ferramentas como Meta Advantage+ e Google Performance Max</li>
+        <li>Geração de ideias criativas com base em prompts estratégicos</li>
       </ul>
       <div class="tags">
-        <span class="tag">TensorFlow</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag">OpenAI</span>
+        <span class="tag">IA</span>
+        <span class="tag">Chatbots</span>
+        <span class="tag">Automação</span>
       </div>
     </div>
 
-    <!-- Card 4 -->
+    <!-- Card 12 - Comercial e Vendas -->
     <div class="service-card">
-      <div class="icon-box"><i class="fas fa-cloud"></i></div>
-      <h3>Soluções Cloud</h3>
+      <div class="icon-box"><i class="fas fa-handshake"></i></div>
+      <h3>Comercial e Vendas</h3>
       <ul>
-        <li>AWS & Azure</li>
-        <li>DevOps & CI/CD</li>
-        <li>Monitoramento 24/7</li>
-        <li>Backup Automático</li>
+        <li>Implementação e gestão de CRM</li>
+        <li>Treinamento para equipe de vendas</li>
+        <li>Roteiros de abordagem e pitch de vendas</li>
+        <li>Estratégias de pré-negociação ativa (outbound)</li>
       </ul>
       <div class="tags">
-        <span class="tag">AWS</span>
-        <span class="tag">Docker</span>
-        <span class="tag">Kubernetes</span>
-      </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="service-card">
-      <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
-      <h3>Cibersegurança</h3>
-      <ul>
-        <li>Auditoria de Segurança</li>
-        <li>Proteção de Dados</li>
-        <li>Compliance LGPD</li>
-        <li>Monitoramento 24/7</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">Firewall</span>
-        <span class="tag">SSL/TLS</span>
-        <span class="tag">Pentest</span>
-      </div>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="service-card">
-      <div class="icon-box"><i class="fas fa-chart-line"></i></div>
-      <h3>Consultoria Digital</h3>
-      <ul>
-        <li>Transformação Digital</li>
-        <li>Estratégia de Negócio</li>
-        <li>Otimização de Processos</li>
-        <li>ROI Mensurável</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">BI</span>
-        <span class="tag">Analytics</span>
-        <span class="tag">KPI</span>
-      </div>
-    </div>
-
-    <!-- Card 7 -->
-    <div class="service-card">
-      <div class="icon-box"><i class="fas fa-database"></i></div>
-      <h3>Banco de Dados</h3>
-      <ul>
-        <li>Modelagem de Dados</li>
-        <li>Backup & Restore</li>
-        <li>Alta Disponibilidade</li>
-        <li>SQL & NoSQL</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">MySQL</span>
-        <span class="tag">MongoDB</span>
-        <span class="tag">PostgreSQL</span>
-      </div>
-    </div>
-
-    <!-- Card 8 -->
-    <div class="service-card">
-      <div class="icon-box"><i class="fas fa-robot"></i></div>
-      <h3>Automação de Processos</h3>
-      <ul>
-        <li>RPA com Bots</li>
-        <li>Integração de Sistemas</li>
-        <li>Redução de Custos</li>
-        <li>Eficiência Operacional</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">UiPath</span>
-        <span class="tag">Power Automate</span>
-        <span class="tag">Zapier</span>
-      </div>
-    </div>
-
-    <!-- Card 9 -->
-    <div class="service-card">
-      <div class="icon-box"><i class="fas fa-cogs"></i></div>
-      <h3>Desenvolvimento de Software</h3>
-      <ul>
-        <li>Sistemas Personalizados</li>
-        <li>APIs e Integrações</li>
-        <li>Testes Automatizados</li>
-        <li>Metodologias Ágeis</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">Java</span>
-        <span class="tag">C#</span>
-        <span class="tag">Go</span>
+        <span class="tag">CRM</span>
+        <span class="tag">Vendas</span>
+        <span class="tag">Outbound</span>
       </div>
     </div>
 
   </div>
+
+  <!-- OnTop Partnership Section -->
+  <div class="partnership-section">
+    <div class="partnership-content">
+      <img src="ontop-logo.png" alt="OnTop" class="partnership-logo">
+      <div class="partnership-text">
+        <h3>Parceria Estratégica</h3>
+        <p>Trabalhamos em parceria com a OnTop para oferecer soluções ainda mais completas e inovadoras para nossos clientes, combinando expertise em marketing digital e tecnologia de ponta.</p>
+      </div>
+    </div>
+  </div>
+
 </section>
-<script defer src="script.js"></script>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/5541992143478?text=Olá! Gostaria de saber mais sobre os serviços da K.A.D.A. Systems." class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
 </body>
 </html>
