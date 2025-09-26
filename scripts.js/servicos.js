@@ -46,93 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Simple carousel logic (mobile-first)
-(function(){
-  const carousel = document.getElementById('carousel');
-  if (!carousel) return;
-  
-  const slides = Array.from(carousel.children);
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
-  let index = 0;
-
-  function showIndex(i){
-    const width = carousel.clientWidth;
-    // calculate translateX to show item at index
-    let offset = 0;
-    // On wide screens show 3 slides — we set slides widths accordingly; here we just compute offset by slide width
-    const slide = slides[0];
-    if (!slide) return;
-    
-    const slideW = slide.getBoundingClientRect().width + 18; // include gap
-    offset = slideW * i;
-    carousel.style.transform = `translateX(-${offset}px)`;
-    carousel.style.transition = 'transform 450ms cubic-bezier(.2,.9,.3,1)';
-  }
-
-  if(prev) {
-    prev.addEventListener('click', ()=>{
-      index = Math.max(0, index - 1);
-      showIndex(index);
-    });
-  }
-  
-  if(next) {
-    next.addEventListener('click', ()=>{
-      index = Math.min(slides.length - 1, index + 1);
-      showIndex(index);
-    });
-  }
-
-  // touch swipe for mobile
-  let startX = 0, currentX = 0, isDown=false;
-  
-  carousel.addEventListener('pointerdown', (e)=>{
-    isDown=true; 
-    startX = e.clientX;
-    carousel.style.transition = '';
-  });
-  
-  window.addEventListener('pointermove', (e)=>{
-    if(!isDown) return;
-    currentX = e.clientX;
-    const dx = startX - currentX;
-    const slide = slides[0];
-    if (!slide) return;
-    
-    carousel.style.transform = `translateX(-${(slide.getBoundingClientRect().width + 18) * index + dx}px)`;
-  });
-  
-  window.addEventListener('pointerup', (e)=>{
-    if(!isDown) return;
-    isDown=false;
-    const dx = startX - e.clientX;
-    if(dx > 60) index = Math.min(slides.length -1, index + 1);
-    else if(dx < -60) index = Math.max(0, index - 1);
-    showIndex(index);
-  });
-
-  // initial layout
-  window.addEventListener('load', ()=> showIndex(0));
-  window.addEventListener('resize', ()=> showIndex(index));
-})();
-
-// show bottom CTA when user scrolls a bit
-const bottomCta = document.getElementById('bottomCta');
-let shown = false;
-
-window.addEventListener('scroll', ()=>{
-  if(!bottomCta) return;
-  
-  if(window.scrollY > 500 && !shown){
-    bottomCta.classList.remove('hidden');
-    shown = true;
-  } else if(window.scrollY < 200 && shown){
-    bottomCta.classList.add('hidden');
-    shown = false;
-  }
-});
-
 // small accessibility: close menu with Esc
 window.addEventListener('keydown', (e)=>{
   if(e.key === 'Escape') closeMenu();
@@ -214,6 +127,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     link.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+    });
+  });
+  
+  // Enhanced hover effects for service cards
+  const serviceCards = document.querySelectorAll('.service-card');
+  
+  serviceCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-5px)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
       this.style.transform = 'translateY(0)';
     });
   });

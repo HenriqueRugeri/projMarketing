@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Nossos Serviços</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/servicos.css">
+
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="navbar" role="banner">
+    <div class="logo" aria-hidden="false">
+      <div class="logo-icon">i</div>
+      <div>
+        <span class="logo-text">luck</span>
+        <span class="logo-agencia">agência</span>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation Menu -->
+    <nav class="menu" role="navigation" aria-label="Menu principal">
+      <a href="#">Home</a>
+      <a href="#" class="dropdown-toggle">Nossos Serviços <i class="fas fa-chevron-down"></i></a>
+      <a href="#">Quem Somos</a>
+      <a href="#">Blog</a>
+      <a href="#" class="dropdown-toggle">Contato <i class="fas fa-chevron-down"></i></a>
+    </nav>
+
+    <!-- CTA Button for Desktop -->
+    <a href="https://wa.me/55419966749865" target="_blank" class="btn-whatsapp">
+      <i class="fab fa-whatsapp"></i> Fale Conosco
+    </a>
+
+    <!-- Mobile Hamburger -->
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+      <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="1" width="18" height="2" rx="1" fill="white" opacity="0.9"/>
+        <rect y="6" width="18" height="2" rx="1" fill="white" opacity="0.7"/>
+        <rect y="11" width="18" height="2" rx="1" fill="white" opacity="0.5"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Side menu for mobile -->
+  <div class="side-menu" id="sideMenu" aria-hidden="true">
+    <div class="backdrop" id="menuBackdrop"></div>
+    <nav class="panel" role="navigation" aria-label="Menu principal">
+      <div class="side-close" id="sideClose" aria-label="Fechar menu">✕</div>
+      <h3>Menu</h3>
+      <ul class="nav-list">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Nossos Serviços ▾</a></li>
+        <li><a href="#">Quem Somos</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contato ▾</a></li>
+      </ul>
+    </nav>
+  </div>
+
+<section class="services-section">
+  <h2>Nossos Serviços Principais</h2>
+  <p>Soluções completas e personalizadas para impulsionar seu negócio no mundo digital</p>
+
+  <div class="cards-grid">
+
+    <!-- Card 1 -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-code"></i></div>
+      <h3>Desenvolvimento Web</h3>
+      <ul>
+        <li>Design Responsivo</li>
+        <li>Performance Otimizada</li>
+        <li>SEO Integrado</li>
+        <li>Manutenção Contínua</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
+      <h3>Aplicativos Mobile</h3>
+      <ul>
+        <li>iOS & Android</li>
+        <li>UX/UI Otimizada</li>
+        <li>Integração APIs</li>
+        <li>Push Notifications</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Flutter</span>
+        <span class="tag">React Native</span>
+        <span class="tag">Swift</span>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-brain"></i></div>
+      <h3>Inteligência Artificial</h3>
+      <ul>
+        <li>Machine Learning</li>
+        <li>Análise Preditiva</li>
+        <li>Chatbots Inteligentes</li>
+        <li>Processamento de Dados</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">TensorFlow</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">OpenAI</span>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-cloud"></i></div>
+      <h3>Soluções Cloud</h3>
+      <ul>
+        <li>AWS & Azure</li>
+        <li>DevOps & CI/CD</li>
+        <li>Monitoramento 24/7</li>
+        <li>Backup Automático</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">AWS</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Kubernetes</span>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+      <h3>Cibersegurança</h3>
+      <ul>
+        <li>Auditoria de Segurança</li>
+        <li>Proteção de Dados</li>
+        <li>Compliance LGPD</li>
+        <li>Monitoramento 24/7</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Firewall</span>
+        <span class="tag">SSL/TLS</span>
+        <span class="tag">Pentest</span>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+      <h3>Consultoria Digital</h3>
+      <ul>
+        <li>Transformação Digital</li>
+        <li>Estratégia de Negócio</li>
+        <li>Otimização de Processos</li>
+        <li>ROI Mensurável</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">BI</span>
+        <span class="tag">Analytics</span>
+        <span class="tag">KPI</span>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-database"></i></div>
+      <h3>Banco de Dados</h3>
+      <ul>
+        <li>Modelagem de Dados</li>
+        <li>Backup & Restore</li>
+        <li>Alta Disponibilidade</li>
+        <li>SQL & NoSQL</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">MySQL</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">PostgreSQL</span>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-robot"></i></div>
+      <h3>Automação de Processos</h3>
+      <ul>
+        <li>RPA com Bots</li>
+        <li>Integração de Sistemas</li>
+        <li>Redução de Custos</li>
+        <li>Eficiência Operacional</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">UiPath</span>
+        <span class="tag">Power Automate</span>
+        <span class="tag">Zapier</span>
+      </div>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="service-card">
+      <div class="icon-box"><i class="fas fa-cogs"></i></div>
+      <h3>Desenvolvimento de Software</h3>
+      <ul>
+        <li>Sistemas Personalizados</li>
+        <li>APIs e Integrações</li>
+        <li>Testes Automatizados</li>
+        <li>Metodologias Ágeis</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Java</span>
+        <span class="tag">C#</span>
+        <span class="tag">Go</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+<script defer src="script.js"></script>
+
+</body>
+</html>
