@@ -246,6 +246,10 @@ body{
   font-size:30px;
 }
 
+.hero p .Icent{
+  color:var(--accent)
+}
+
 .hero p{
   max-width:720px;
   color: #d9cfe6;
