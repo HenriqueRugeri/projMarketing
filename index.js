@@ -24,6 +24,77 @@ if(hamburger) hamburger.addEventListener('click', openMenu);
 if(menuBackdrop) menuBackdrop.addEventListener('click', closeMenu);
 if(sideClose) sideClose.addEventListener('click', closeMenu);
 
+// Carousel functionality
+const carousel = document.getElementById('carousel');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+function updateCarousel() {
+  if (carousel && slides.length > 0) {
+    const slideWidth = slides[0].offsetWidth + 18; // width + gap
+    carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+  }
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  updateCarousel();
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  updateCarousel();
+}
+
+if(nextBtn) nextBtn.addEventListener('click', nextSlide);
+if(prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+// Auto-advance carousel
+let autoSlideInterval;
+
+function startAutoSlide() {
+  autoSlideInterval = setInterval(nextSlide, 5000); // 5 seconds
+}
+
+function stopAutoSlide() {
+  if (autoSlideInterval) {
+    clearInterval(autoSlideInterval);
+  }
+}
+
+// Start auto-slide on load
+window.addEventListener('load', startAutoSlide);
+
+// Pause auto-slide on hover
+if (carousel) {
+  carousel.addEventListener('mouseenter', stopAutoSlide);
+  carousel.addEventListener('mouseleave', startAutoSlide);
+}
+
+// Bottom CTA visibility
+const bottomCta = document.getElementById('bottomCta');
+const hero = document.getElementById('hero');
+
+function toggleBottomCta() {
+  if (bottomCta && hero) {
+    const heroRect = hero.getBoundingClientRect();
+    const isHeroVisible = heroRect.bottom > 0;
+    
+    if (isHeroVisible) {
+      bottomCta.classList.add('hidden');
+    } else {
+      bottomCta.classList.remove('hidden');
+    }
+  }
+}
+
+window.addEventListener('scroll', toggleBottomCta);
+window.addEventListener('load', toggleBottomCta);
+
 // Desktop dropdown functionality for new menu
 document.addEventListener('DOMContentLoaded', function() {
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
@@ -44,93 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-});
-
-// Simple carousel logic (mobile-first)
-(function(){
-  const carousel = document.getElementById('carousel');
-  if (!carousel) return;
-  
-  const slides = Array.from(carousel.children);
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
-  let index = 0;
-
-  function showIndex(i){
-    const width = carousel.clientWidth;
-    // calculate translateX to show item at index
-    let offset = 0;
-    // On wide screens show 3 slides — we set slides widths accordingly; here we just compute offset by slide width
-    const slide = slides[0];
-    if (!slide) return;
-    
-    const slideW = slide.getBoundingClientRect().width + 18; // include gap
-    offset = slideW * i;
-    carousel.style.transform = `translateX(-${offset}px)`;
-    carousel.style.transition = 'transform 450ms cubic-bezier(.2,.9,.3,1)';
-  }
-
-  if(prev) {
-    prev.addEventListener('click', ()=>{
-      index = Math.max(0, index - 1);
-      showIndex(index);
-    });
-  }
-  
-  if(next) {
-    next.addEventListener('click', ()=>{
-      index = Math.min(slides.length - 1, index + 1);
-      showIndex(index);
-    });
-  }
-
-  // touch swipe for mobile
-  let startX = 0, currentX = 0, isDown=false;
-  
-  carousel.addEventListener('pointerdown', (e)=>{
-    isDown=true; 
-    startX = e.clientX;
-    carousel.style.transition = '';
-  });
-  
-  window.addEventListener('pointermove', (e)=>{
-    if(!isDown) return;
-    currentX = e.clientX;
-    const dx = startX - currentX;
-    const slide = slides[0];
-    if (!slide) return;
-    
-    carousel.style.transform = `translateX(-${(slide.getBoundingClientRect().width + 18) * index + dx}px)`;
-  });
-  
-  window.addEventListener('pointerup', (e)=>{
-    if(!isDown) return;
-    isDown=false;
-    const dx = startX - e.clientX;
-    if(dx > 60) index = Math.min(slides.length -1, index + 1);
-    else if(dx < -60) index = Math.max(0, index - 1);
-    showIndex(index);
-  });
-
-  // initial layout
-  window.addEventListener('load', ()=> showIndex(0));
-  window.addEventListener('resize', ()=> showIndex(index));
-})();
-
-// show bottom CTA when user scrolls a bit
-const bottomCta = document.getElementById('bottomCta');
-let shown = false;
-
-window.addEventListener('scroll', ()=>{
-  if(!bottomCta) return;
-  
-  if(window.scrollY > 500 && !shown){
-    bottomCta.classList.remove('hidden');
-    shown = true;
-  } else if(window.scrollY < 200 && shown){
-    bottomCta.classList.add('hidden');
-    shown = false;
-  }
 });
 
 // small accessibility: close menu with Esc
@@ -197,11 +181,13 @@ function handleResponsiveMenu() {
 window.addEventListener('load', () => {
   preventHorizontalScroll();
   handleResponsiveMenu();
+  updateCarousel(); // Initialize carousel position
 });
 
 window.addEventListener('resize', () => {
   preventHorizontalScroll();
   handleResponsiveMenu();
+  updateCarousel(); // Update carousel on resize
 });
 
 // Enhanced hover effects for menu items
@@ -217,4 +203,202 @@ document.addEventListener('DOMContentLoaded', function() {
       this.style.transform = 'translateY(0)';
     });
   });
+  
+  // Enhanced hover effects for WhatsApp float button
+  const whatsappFloat = document.querySelector('.whatsapp-float');
+  
+  if (whatsappFloat) {
+    whatsappFloat.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.1)';
+      this.style.boxShadow = '0 8px 30px rgba(37, 211, 102, 0.5)';
+    });
+    
+    whatsappFloat.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+      this.style.boxShadow = '0 4px 20px rgba(37, 211, 102, 0.3)';
+    });
+  }
+});
+
+// Animation on scroll
+function animateOnScroll() {
+  const elements = document.querySelectorAll('.slide, .cta, .badge');
+  
+  elements.forEach(element => {
+    const elementTop = element.getBoundingClientRect().top;
+    const elementVisible = 150;
+    
+    if (elementTop < window.innerHeight - elementVisible) {
+      element.classList.add('animate-in');
+    }
+  });
+}
+
+window.addEventListener('scroll', animateOnScroll);
+window.addEventListener('load', animateOnScroll);
+
+// Brands slider functionality - Mobile Optimized
+document.addEventListener('DOMContentLoaded', function() {
+  const brandsSlider = document.querySelector('.brands-slider');
+  const brandsTrack = document.querySelector('.brands-track');
+  
+  if (brandsSlider && brandsTrack) {
+    // Mobile-first approach - only add hover effects on non-touch devices
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    if (!isTouchDevice) {
+      // Pause animation on hover for desktop
+      brandsSlider.addEventListener('mouseenter', function() {
+        brandsTrack.style.animationPlayState = 'paused';
+      });
+      
+      brandsSlider.addEventListener('mouseleave', function() {
+        brandsTrack.style.animationPlayState = 'running';
+      });
+      
+      // Enhanced hover effects for brand items on desktop
+      const brandItems = document.querySelectorAll('.brand-item');
+      
+      brandItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-3px) scale(1.02)';
+          this.style.boxShadow = '0 10px 30px rgba(163, 102, 255, 0.15)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+          this.style.boxShadow = '0 0 0 rgba(163, 102, 255, 0)';
+        });
+      });
+    }
+    
+    // Intersection Observer for performance - pause when not visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          brandsTrack.style.animationPlayState = 'running';
+        } else {
+          brandsTrack.style.animationPlayState = 'paused';
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '50px'
+    });
+    
+    observer.observe(brandsSlider);
+    
+    // Preload brand images with lazy loading for better mobile performance
+    const brandImages = document.querySelectorAll('.brand-item img');
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.complete) {
+            img.style.opacity = '1';
+          } else {
+            img.style.opacity = '0';
+            img.addEventListener('load', function() {
+              this.style.transition = 'opacity 0.3s ease';
+              this.style.opacity = '1';
+            });
+          }
+          imageObserver.unobserve(img);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '100px'
+    });
+    
+    brandImages.forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
+});
+
+// Responsive adjustments for brands slider - Mobile Optimized
+function adjustBrandsSlider() {
+  const brandsSection = document.querySelector('.brands-section');
+  const brandItems = document.querySelectorAll('.brand-item');
+  
+  if (brandsSection && brandItems.length > 0) {
+    const viewportWidth = window.innerWidth;
+    const brandsTrack = document.querySelector('.brands-track');
+    
+    if (brandsTrack) {
+      // Adjust animation speed based on screen size for better mobile experience
+      if (viewportWidth <= 360) {
+        brandsTrack.style.animationDuration = '30s';
+      } else if (viewportWidth <= 480) {
+        brandsTrack.style.animationDuration = '35s';
+      } else if (viewportWidth <= 767) {
+        brandsTrack.style.animationDuration = '40s';
+      } else {
+        brandsTrack.style.animationDuration = '50s';
+      }
+      
+      // Reduce motion for users who prefer it
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        brandsTrack.style.animationDuration = '120s';
+      }
+    }
+  }
+}
+
+// Throttled resize handler for better mobile performance
+let resizeTimeout;
+function throttledResize() {
+  if (resizeTimeout) {
+    clearTimeout(resizeTimeout);
+  }
+  resizeTimeout = setTimeout(() => {
+    adjustBrandsSlider();
+  }, 100);
+}
+
+window.addEventListener('resize', throttledResize);
+window.addEventListener('load', adjustBrandsSlider);
+
+// Touch gesture support for mobile devices
+document.addEventListener('DOMContentLoaded', function() {
+  const brandsSlider = document.querySelector('.brands-slider');
+  
+  if (brandsSlider && 'ontouchstart' in window) {
+    let startX = 0;
+    let startTime = 0;
+    
+    brandsSlider.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      startTime = Date.now();
+    }, { passive: true });
+    
+    brandsSlider.addEventListener('touchend', function(e) {
+      const endX = e.changedTouches[0].clientX;
+      const endTime = Date.now();
+      const deltaX = endX - startX;
+      const deltaTime = endTime - startTime;
+      
+      // If it's a quick swipe, temporarily speed up the animation
+      if (Math.abs(deltaX) > 50 && deltaTime < 300) {
+        const brandsTrack = document.querySelector('.brands-track');
+        if (brandsTrack) {
+          const currentDuration = parseFloat(getComputedStyle(brandsTrack).animationDuration);
+          brandsTrack.style.animationDuration = (currentDuration * 0.5) + 's';
+          
+          setTimeout(() => {
+            adjustBrandsSlider(); // Reset to normal speed
+          }, 2000);
+        }
+      }
+    }, { passive: true });
+  }
+});
+
+// Memory cleanup for better mobile performance
+window.addEventListener('beforeunload', function() {
+  const brandsTrack = document.querySelector('.brands-track');
+  if (brandsTrack) {
+    brandsTrack.style.animationPlayState = 'paused';
+  }
 });

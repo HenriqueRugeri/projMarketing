@@ -339,6 +339,98 @@ body{
   border:1px solid rgba(255,255,255,0.03);
 }
 
+/* Brands Slider Section - Full Width */
+.brands-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 60px;
+  padding: 50px 0;
+  background: linear-gradient(135deg, rgba(245, 196, 0, 0.08), rgba(163, 102, 255, 0.08));
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.brands-section h3 {
+  text-align: center;
+  font-size: 24px;
+  color: #a366ff;
+  margin-bottom: 40px;
+  font-weight: 700;
+  padding: 0 20px;
+}
+
+.brands-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
+  -webkit-mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
+}
+
+.brands-track {
+  display: flex;
+  width: calc(200% + 40px);
+  animation: scroll-brands 50s linear infinite;
+  gap: 30px;
+  will-change: transform;
+}
+
+.brand-item {
+  flex-shrink: 0;
+  width: 140px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  padding: 12px;
+  backdrop-filter: blur(5px);
+}
+
+.brand-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(163, 102, 255, 0.4);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(163, 102, 255, 0.15);
+}
+
+.brand-item img {
+  /* max-width: 100%;
+  max-height: 100%; */
+  object-fit: cover;
+  width:100%;
+  height: 100%;
+  filter: brightness(0.95) contrast(1.1) saturate(1.1);
+  transition: all 0.3s ease;
+}
+
+.brand-item:hover img {
+  filter: brightness(1.15) contrast(1.2) saturate(1.2);
+  transform: scale(1.05);
+}
+
+@keyframes scroll-brands {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 15px));
+  }
+}
+
+/* Pause animation on hover */
+.brands-slider:hover .brands-track {
+  animation-play-state: paused;
+}
+
 /* Footer-ish CTA bottom */
 .bottom-cta{
   position:fixed;
@@ -357,22 +449,29 @@ body{
   text-decoration: none;
 }
 
-.whatsapp-float{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  background:#25d366;
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 10px 30px rgba(0,0,0,0.35);
-  z-index:70;
-  color:#fff;
-  font-size:20px;
+/* WhatsApp Float - Unified Style (same as services page) */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
   text-decoration: none;
+  font-size: 28px;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
 }
 
 /* Responsive Design */
@@ -421,6 +520,14 @@ body{
     min-width: 45%;
     max-width: 45%;
     height: 300px;
+  }
+  
+  .whatsapp-float {
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    font-size: 26px;
   }
 }
 
@@ -480,6 +587,48 @@ body{
   }
 }
 
+/* Mobile optimizations for brands slider */
+@media(max-width: 767px) {
+  .menu {
+    display: none;
+  }
+  
+  .btn-whatsapp {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .brands-section {
+    padding: 40px 0;
+    margin-top: 40px;
+  }
+  
+  .brands-section h3 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding: 0 16px;
+    line-height: 1.3;
+  }
+  
+  .brands-track {
+    gap: 20px;
+    animation-duration: 40s;
+  }
+  
+  .brand-item {
+    width: 120px;
+    height: 65px;
+    padding: 10px;
+  }
+  
+  .brand-item:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+}
+
 /* Small Mobile */
 @media(max-width: 480px){
   .navbar {
@@ -503,20 +652,35 @@ body{
     width: 82%;
   }
   
-  .hero {
-    padding: 110px 20px 60px;
-  }
-  
-  .hero h1 {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
     font-size: 24px;
   }
   
-  .hero h1 .accent {
-    font-size: 26px;
+  /* Brands slider optimizations */
+  .brands-section {
+    padding: 30px 0;
+    margin-top: 30px;
   }
   
-  .section {
-    padding: 40px 20px 80px;
+  .brands-section h3 {
+    font-size: 18px;
+    margin-bottom: 25px;
+    padding: 0 12px;
+  }
+  
+  .brands-track {
+    gap: 15px;
+    animation-duration: 35s;
+  }
+  
+  .brand-item {
+    width: 100px;
+    height: 55px;
+    padding: 8px;
   }
 }
 
@@ -543,35 +707,34 @@ body{
     width: 88%;
   }
   
-  .hero {
-    padding: 110px 16px 60px;
-  }
-  
-  .hero h1 {
-    font-size: 20px;
-  }
-  
-  .hero h1 .accent {
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
     font-size: 22px;
   }
   
-  .section {
-    padding: 40px 16px 80px;
-  }
-}
-
-/* Mobile responsive for new navbar */
-@media (max-width: 767px) {
-  .menu {
-    display: none;
+  /* Brands slider optimizations */
+  .brands-section {
+    padding: 25px 0;
   }
   
-  .btn-whatsapp {
-    display: none;
+  .brands-section h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 0 10px;
   }
   
-  .hamburger {
-    display: flex;
+  .brands-track {
+    gap: 12px;
+    animation-duration: 30s;
+  }
+  
+  .brand-item {
+    width: 90px;
+    height: 50px;
+    padding: 6px;
   }
 }
 
@@ -587,3 +750,34 @@ html, body {
 
 /* Small helpers */
 .hidden{display:none}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .brands-track {
+    animation-duration: 120s;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .brand-item img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Animações de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
