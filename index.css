@@ -208,7 +208,7 @@ body{
   cursor:pointer;
 }
 
-/* Hero */
+/* Hero Original */
 .hero{
   padding-top:88px;
   min-height:100vh;
@@ -255,6 +255,55 @@ body{
   color: #d9cfe6;
   margin:6px 0 18px;
   font-size:15px;
+}
+
+/* Hero About Section (da página Quem Somos) */
+.hero-about {
+  padding-top: 88px;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 110px 20px 60px;
+  background-image: radial-gradient(circle at 50% 30%, rgba(107,59,216,0.06), transparent 20%);
+  max-width: 100vw;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-about .badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 34px;
+  background: rgba(255,255,255,0.03);
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.hero-about h1 {
+  font-size: 28px;
+  margin: 8px 0 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hero-about h1 .accent {
+  color: var(--accent);
+}
+
+.hero-about p {
+  color: #d9cfe6;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 30px;
 }
 
 /* CTA */
@@ -500,42 +549,42 @@ body{
   .btn-whatsapp {
     display: flex;
     padding: 10px 16px;
-    font-size: 13px;
+    font-size: 14px;
   }
   
-  .hamburger {
-    display: none;
-  }
-  
-  .hero {
-    padding: 130px 32px 80px;
+  .btn-whatsapp i {
+    padding: 6px;
+    font-size: 14px;
+    margin-right: 8px;
   }
   
   .hero h1 {
-    font-size: 38px;
+    font-size: 32px;
   }
   
   .hero h1 .accent {
-    display: inline;
-    font-size: 38px;
+    font-size: 34px;
+  }
+  
+  .hero p {
+    font-size: 16px;
+  }
+  
+  .hero-about h1 {
+    font-size: 36px;
+  }
+  
+  .hero-about p {
+    font-size: 18px;
   }
   
   .slide {
-    min-width: 45%;
-    max-width: 45%;
-    height: 300px;
-  }
-  
-  .whatsapp-float {
-    bottom: 25px;
-    right: 25px;
-    width: 55px;
-    height: 55px;
-    font-size: 26px;
+    min-width: 60%;
+    max-width: 60%;
   }
 }
 
-/* Large Desktop */
+/* Large screens - full desktop layout */
 @media(min-width: 1024px){
   .navbar {
     padding: 15px 40px;
@@ -543,245 +592,120 @@ body{
   
   .menu {
     display: flex;
-    gap: 25px;
-    margin: 0 32px;
   }
   
   .btn-whatsapp {
     display: flex;
   }
   
-  .hamburger {
-    display: none;
-  }
-  
   .hero {
-    padding: 130px 40px 80px;
+    padding: 140px 40px 80px;
   }
   
   .hero h1 {
-    font-size: 44px;
+    font-size: 42px;
   }
   
   .hero h1 .accent {
-    display: inline;
     font-size: 44px;
   }
   
+  .hero p {
+    font-size: 18px;
+  }
+  
+  .hero-about {
+    padding: 140px 40px 80px;
+  }
+  
+  .hero-about h1 {
+    font-size: 42px;
+  }
+  
+  .hero-about p {
+    font-size: 18px;
+  }
+  
   .slide {
-    min-width: 32%;
-    max-width: 32%;
-    height: 320px;
+    min-width: 45%;
+    max-width: 45%;
+  }
+  
+  .section {
+    padding: 60px 40px 100px;
   }
 }
 
-/* Extra Large Desktop */
+/* Extra large screens */
 @media(min-width: 1200px){
-  .navbar {
-    padding: 15px 60px;
+  .hero h1 {
+    font-size: 48px;
   }
   
-  .menu {
-    margin: 0 40px;
-    gap: 30px;
+  .hero h1 .accent {
+    font-size: 50px;
   }
   
-  .hero {
-    padding: 140px 60px 100px;
+  .hero-about h1 {
+    font-size: 48px;
+  }
+  
+  .slide {
+    min-width: 40%;
+    max-width: 40%;
   }
 }
 
-/* Mobile optimizations for brands slider */
-@media(max-width: 767px) {
-  .menu {
-    display: none;
-  }
-  
-  .btn-whatsapp {
-    display: none;
-  }
-  
-  .hamburger {
-    display: flex;
-  }
-  
-  .brands-section {
-    padding: 40px 0;
-    margin-top: 40px;
-  }
-  
-  .brands-section h3 {
-    font-size: 20px;
-    margin-bottom: 30px;
-    padding: 0 16px;
-    line-height: 1.3;
-  }
-  
-  .brands-track {
-    gap: 20px;
-    animation-duration: 40s;
-  }
-  
-  .brand-item {
-    width: 120px;
-    height: 65px;
-    padding: 10px;
-  }
-  
-  .brand-item:hover {
-    transform: translateY(-2px) scale(1.01);
-  }
-}
-
-/* Small Mobile */
-@media(max-width: 480px){
+/* Mobile specific styles */
+@media(max-width: 767px){
   .navbar {
     padding: 15px 20px;
   }
   
-  .logo {
+  .hero {
+    padding: 100px 16px 50px;
+  }
+  
+  .hero h1 {
     font-size: 24px;
   }
   
-  .logo-icon {
-    font-size: 20px;
-    padding: 4px 8px;
+  .hero h1 .accent {
+    font-size: 26px;
   }
   
-  .logo-agencia {
-    font-size: 12px;
+  .hero p {
+    font-size: 14px;
   }
   
-  .side-menu .panel {
-    width: 82%;
+  .hero-about {
+    padding: 100px 16px 50px;
   }
   
-  .whatsapp-float {
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
+  .hero-about h1 {
     font-size: 24px;
   }
   
-  /* Brands slider optimizations */
+  .hero-about p {
+    font-size: 15px;
+  }
+  
+  .section {
+    padding: 40px 16px 60px;
+  }
+  
+  .slide {
+    min-width: 85%;
+    max-width: 85%;
+  }
+  
   .brands-section {
-    padding: 30px 0;
-    margin-top: 30px;
-  }
-  
-  .brands-section h3 {
-    font-size: 18px;
-    margin-bottom: 25px;
-    padding: 0 12px;
-  }
-  
-  .brands-track {
-    gap: 15px;
-    animation-duration: 35s;
-  }
-  
-  .brand-item {
-    width: 100px;
-    height: 55px;
-    padding: 8px;
+    margin-top: 40px;
+    padding: 40px 0;
   }
 }
 
-/* Extra Small Mobile */
-@media(max-width: 360px){
-  .navbar {
-    padding: 15px 16px;
-  }
-  
-  .logo {
-    font-size: 22px;
-  }
-  
-  .logo-icon {
-    font-size: 18px;
-    padding: 3px 6px;
-  }
-  
-  .logo-agencia {
-    font-size: 11px;
-  }
-  
-  .side-menu .panel {
-    width: 88%;
-  }
-  
-  .whatsapp-float {
-    bottom: 15px;
-    right: 15px;
-    width: 45px;
-    height: 45px;
-    font-size: 22px;
-  }
-  
-  /* Brands slider optimizations */
-  .brands-section {
-    padding: 25px 0;
-  }
-  
-  .brands-section h3 {
-    font-size: 16px;
-    margin-bottom: 20px;
-    padding: 0 10px;
-  }
-  
-  .brands-track {
-    gap: 12px;
-    animation-duration: 30s;
-  }
-  
-  .brand-item {
-    width: 90px;
-    height: 50px;
-    padding: 6px;
-  }
-}
-
-/* Prevent horizontal scroll */
-html, body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-* {
-  max-width: 100%;
-}
-
-/* Small helpers */
-.hidden{display:none}
-
-/* Performance optimizations */
-@media (prefers-reduced-motion: reduce) {
-  .brands-track {
-    animation-duration: 120s;
-  }
-}
-
-/* High DPI displays */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .brand-item img {
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-  }
-}
-
-/* Animações de entrada */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-in {
-  animation: fadeInUp 0.6s ease forwards;
+/* Hidden class */
+.hidden {
+  display: none !important;
 }
