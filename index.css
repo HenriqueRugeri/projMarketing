@@ -19,6 +19,15 @@ body{
   overflow-x:hidden;
 }
 
+/* Active menu item */
+.menu a.active {
+  color: var(--accent);
+}
+
+.nav-list a.active {
+  color: var(--accent);
+}
+
 /* New Header Design */
 .navbar {
   display: flex;
