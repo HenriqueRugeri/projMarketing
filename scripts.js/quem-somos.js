@@ -95,34 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
     casesObserver.observe(casesSection);
   }
 
-  // Lazy loading para imagens dos clientes
-  const clientImages = document.querySelectorAll('.client-logo img');
-  const imageObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.3s ease';
-        
-        img.onload = () => {
-          img.style.opacity = '1';
-        };
-        
-        imageObserver.unobserve(img);
-      }
-    });
-  });
-
-  clientImages.forEach(img => {
-    imageObserver.observe(img);
-  });
-
   // Parallax suave para seções
   let ticking = false;
   
   const updateParallax = () => {
     const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero-about, .cta-section');
+    const parallaxElements = document.querySelectorAll('.hero-about');
     
     parallaxElements.forEach(element => {
       const rate = scrolled * -0.5;
