@@ -47,7 +47,6 @@ function updateCarousel() {
 function nextSlide() {
   const totalSlides = getSlides().length;
   if (totalSlides === 0) return;
-  if (totalSlides === 4) return;
   currentSlide = (currentSlide + 1) % totalSlides;
   updateCarousel();
 }
