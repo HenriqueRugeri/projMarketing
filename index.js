@@ -30,22 +30,31 @@ const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 
 let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const totalSlides = slides.length;
+
+function getSlides() {
+  return document.querySelectorAll('.slide');
+}
 
 function updateCarousel() {
+  const slides = getSlides();
   if (carousel && slides.length > 0) {
-    const slideWidth = slides[0].offsetWidth + 18; // width + gap
-    carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const gap = 18;
+    carousel.style.transform = `translateX(-${currentSlide * (slideWidth + gap)}px)`;
   }
 }
 
 function nextSlide() {
+  const totalSlides = getSlides().length;
+  if (totalSlides === 0) return;
+  if (totalSlides === 4) return;
   currentSlide = (currentSlide + 1) % totalSlides;
   updateCarousel();
 }
 
 function prevSlide() {
+  const totalSlides = getSlides().length;
+  if (totalSlides === 0) return;
   currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
   updateCarousel();
 }
@@ -57,7 +66,7 @@ if(prevBtn) prevBtn.addEventListener('click', prevSlide);
 let autoSlideInterval;
 
 function startAutoSlide() {
-  autoSlideInterval = setInterval(nextSlide, 5000); // 5 seconds
+  autoSlideInterval = setInterval(nextSlide, 10000); // 10 seconds
 }
 
 function stopAutoSlide() {
